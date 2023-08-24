@@ -1,1 +1,1 @@
-# Three.js-Solar-System
+# Three.js Solar System
