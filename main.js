@@ -200,23 +200,23 @@ var moving = false
 function animate() {
     requestAnimationFrame( animate );
 
-    sun.rotation.y += 0.05;
+    if (moving == false) {
+        sun.rotation.y += 0.05;
 
-    planetLists.forEach((planet) => {
-        if (moving == false) {
+        planetLists.forEach((planet) => {
             planet[1] -= planet[4];
-
+    
             if (planet[1] == -1) {
                 planet[1] >= 359;
             }
-    
+        
             let yPos = planet[2] * Math.sin(degrees_to_radians(planet[1]));
             let xPos = planet[2] * Math.cos(degrees_to_radians(planet[1]));
             planet[0].position.set(xPos, yPos, 0);
-        }
-
-        planet[0].rotation.y += 0.05;
-    });
+    
+            planet[0].rotation.y += 0.05;
+        });
+    }
 
     renderer.render( scene, camera );
 }
